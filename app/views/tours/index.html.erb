@@ -2,32 +2,10 @@
 
 <h1>Listing Tours</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Teaser</th>
-      <th>Description</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tours.each do |tour| %>
-      <tr>
-        <td><%= tour.title %></td>
-        <td><%= tour.teaser %></td>
-        <td><%= tour.description %></td>
-        <td><%= tour.url %></td>
-        <td><%= link_to 'Show', tour %></td>
-        <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
-        <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<UL>
+  <% @tours.each do |tour| %>
+  <li> <%= link_to tour.title, tour %></li>
+  <% end %>
+</UL>
 <br>
-
 <%= link_to 'New Tour', new_tour_path %>
