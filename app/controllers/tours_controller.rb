@@ -4,7 +4,11 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = Tour.all
+    if params[:category_id]
+    @tours = Category.find(params[:category_id]).tours
+    else
+      @tours = Tour.all
+      end
   end
 
   # GET /tours/1
@@ -65,10 +69,11 @@ class ToursController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tour
       @tour = Tour.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def tour_params
-      params.require(:tour).permit(:title, :teaser, :description, :url)
-    end
+  def tour_params
+    params.require(:tour).permit(:title, :teaser, :description, :url, category_ids: [])
+  end
 end

@@ -41,8 +41,13 @@ group :development, :test do
   gem 'faker'
   gem "better_errors"
   gem "binding_of_caller"
+  gem "capybara"
 end
-
+group :asset do
+  gem 'node'
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
+end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

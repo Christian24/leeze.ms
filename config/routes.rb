@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :tours
+  get ':category_id', to: 'tours#index', as: 'category_tours'
+  root "tours#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :tour do
-    title "MyString"
-teaser "MyString"
-description "MyText"
-url "MyText"
-  end
+  title "My tour"
+  teaser "My teaser"
+  description "My description"
+  url "http://www.google.com/maps/"
+  categories {[FactoryGirl.build(:category)]}
 
+  end
 end
