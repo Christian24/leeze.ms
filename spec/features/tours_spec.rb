@@ -20,7 +20,7 @@ describe "Tours" do
     it "allows to select categories" do
 
       visit root_path
-      click_link category1.name
+       first(:link,category1.name).click
       expect(page).to have_content tour1.title
       expect(page).to_not have_content tour2.title
     end
