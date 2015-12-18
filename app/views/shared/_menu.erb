@@ -1,0 +1,21 @@
+<div class="header clearfix">
+  <nav>
+    <ul class="nav nav-pills pull-right">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <% Category.all.each do |category| %>
+              <li> <%= link_to category.name, category_tours_path(category) %></li>
+              <% if Category.all.last != category %>
+                  <li role="separator" class="divider"></li>
+              <% end %>
+          <% end %>
+
+        </ul>
+      </li>
+      <li role="presentation"><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <h3 class="text-muted">Leeze.ms</h3>
+</div>
