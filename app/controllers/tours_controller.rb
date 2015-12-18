@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /tours
   # GET /tours.json
   def index
@@ -29,7 +29,7 @@ class ToursController < ApplicationController
   # POST /tours.json
   def create
     @tour = Tour.new(tour_params)
-
+    parse_url
     respond_to do |format|
       if @tour.save
         format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
@@ -44,6 +44,7 @@ class ToursController < ApplicationController
   # PATCH/PUT /tours/1
   # PATCH/PUT /tours/1.json
   def update
+    parse_url
     respond_to do |format|
       if @tour.update(tour_params)
         format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
@@ -75,5 +76,20 @@ class ToursController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
   def tour_params
     params.require(:tour).permit(:title, :teaser, :description, :url, category_ids: [])
+
+  end
+  def parse_url
+    if @tour.url.include? '"'
+
+
+    values=  @tour.url.split('"')
+    values.each do |value|
+      if value.start_with?("http")
+        @tour.update_attribute(:url,value)
+
+      end
+    end
+  end
   end
 end
+
