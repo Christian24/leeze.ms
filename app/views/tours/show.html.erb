@@ -1,29 +1,20 @@
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  <h1> <%= @tour.title %></h1>
+  <p class="lead">
+    <%= @tour.teaser %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tour.title %>
-</p>
+  <p>
 
-<p>
-  <strong>Teaser:</strong>
-  <%= @tour.teaser %>
-</p>
+    <%= @tour.description %>
+  </p>
+  <p>
+    <iframe width="1200"height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+    src=<%= @tour.url %>>
 
-<p>
-  <strong>Description:</strong>
-  <%= @tour.description %>
-</p>
-<p>
-  <iframe width="1200"height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-  src=<%= @tour.url %>>
+    </iframe>
+  </p>
 
-  </iframe>
-</p>
-<p>
-  <strong>Url:</strong>
-  <%= @tour.url %>
-</p>
-
-<%= link_to 'Edit', edit_tour_path(@tour) %> |
-<%= link_to 'Back', tours_path %>
+<hr>
+  <%= button_to 'Edit', edit_tour_path(@tour) %>
+  <%= button_to 'Back', tours_path %>
