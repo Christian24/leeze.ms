@@ -8,3 +8,8 @@
 Category.create name: 'Radtour'
 Category.create name: 'Mountainbiketour'
 Category.create name: 'Radwandern'
+pass = "SpartenKaufenGehen123"
+admin = User.create email: 'administrator@example.com', password: pass,
+                    password_confirmation: pass
+admin.add_role :admin
+puts "Admin password is #{pass}"

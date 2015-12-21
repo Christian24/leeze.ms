@@ -28,7 +28,9 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 # Use ActiveModel has_secure_password
 
-  gem 'bcrypt',:git => 'https://github.com/codahale/bcrypt-ruby.git'
+gem 'bcrypt',:git => 'https://github.com/codahale/bcrypt-ruby.git'
+gem 'rolify'
+gem 'activeadmin', github: 'activeadmin'
 
 
 # Use Unicorn as the app server
