@@ -10,7 +10,7 @@ click_link "Sign up"
     fill_in "user_password", with: "sparten123"
     fill_in "user_password_confirmation", with: "sparten123"
     expect {click_button 'Sign up'}.to change {User.count}.by(1)
-expect(page).to have_content "Welcome, test@test.com"
+    expect(page).to have_content "Log out"
 
   end
 end
