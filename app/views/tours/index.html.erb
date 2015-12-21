@@ -14,4 +14,6 @@
 </UL>
 
 <hr>
+<% if can?(:create,Tour) %>
 <%= button_to 'New Tour', new_tour_path %>
+<% end %>
