@@ -19,5 +19,7 @@
   </p>
 
 <hr>
+  <% if can?(:edit,Tour) %>
   <%= button_to 'Edit', edit_tour_path(@tour) %>
+      <% end %>
   <%= button_to 'Back', tours_path %>
