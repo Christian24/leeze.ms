@@ -31,7 +31,7 @@ gem 'devise-bootstrap-views'
 gem 'bcrypt',:git => 'https://github.com/codahale/bcrypt-ruby.git'
 gem 'rolify'
 gem 'activeadmin', github: 'activeadmin'
-gem 'cancan'
+gem 'cancancan'
 
 
 # Use Unicorn as the app server
