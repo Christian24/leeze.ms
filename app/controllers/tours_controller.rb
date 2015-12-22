@@ -12,14 +12,18 @@
           end
       end
       def live_search
+        @tours = Tour.where(table[:title].matches("%#{params[:search]}%"))
+        render :layout => false
+
+=begin
         @tours  = Tour.all
        # @tours = tours.find
-    if params[:categories].present?
+    if params[:category_id].present?
       #Wenn es Kategorien gibt
       @tours = Category.find(params[:category_id]).tours
       if params[:search].present?
         #Wenn es noch eine Search gibt
-        @tours = @tours.where("title ILIKE ? ",  "%#{params[:search]}%").to_sql
+        @tours = @Tour.where(table[:title].matches("%#{params[:search]}%"))
       end
     else
     if params[:search].present?
@@ -31,6 +35,7 @@
     end
 
         render :layout => false
+=end
       end
 
       # GET /tours/1
