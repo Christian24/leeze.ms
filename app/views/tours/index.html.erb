@@ -4,7 +4,7 @@
 <%= form_tag search_path_path, :method => :get, :remote => true, :id => "live_search_form" do %>
 
 <%= text_field_tag :search, params[:search] %>
-<%= select_tag :categories, options_from_collection_for_select(Category.all,:id,:name), {multiple:true} %>
+<%= select_tag :category_id, options_from_collection_for_select(Category.all,:id,:name), {multiple:true} %>
 <% end %>
 <div id="live-search-results">
   <%= render "shared/live_search" %>
