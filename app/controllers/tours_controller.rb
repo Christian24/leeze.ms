@@ -13,11 +13,14 @@
       end
       def live_search
 
-        @tours = Tour.where(table[:title].matches("%#{params[:search]}%"))#.joins(:categories).where(:category_id => params[:category_id])
+        @tours = Tour.includes(:tour_categories)
+            .where(table[:title].matches("%#{params[:search]}%"))
+                     .where(tour_categories:{category_id: params[:category_id]})
+                   .references(:tour_categories)
        if params[:category_id].present?
-       @tours = Tour.includes(:tour_categories)
-                    .where(tour_categories:{category_id: params[:category_id]})
-                    .references(:tour_categories)
+       #@tours = Tour.includes(:tour_categories)
+        #            .where(tour_categories:{category_id: params[:category_id]})
+         #           .references(:tour_categories)
          #@tours = @tours.references(:tour_categories).where(tour_categories:{category_id: params[:category_id]})
         end
         #@tours = @tours.joins(:categories).where(:categories => params[:category_id])
