@@ -1,6 +1,1 @@
-<ul>
-
-  <% @tours.each do |tour| %>
-      <li><%= link_to tour.title, tour_path(tour) %></li>
-  <% end %>
-</ul>
+<%= render "shared/live_search" %>

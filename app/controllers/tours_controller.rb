@@ -12,17 +12,18 @@
           end
       end
       def live_search
+        @tours  = Tour.all
        # @tours = tours.find
     if params[:categories].present?
       #Wenn es Kategorien gibt
       @tours = Category.find(params[:category_id]).tours
       if params[:search].present?
         #Wenn es noch eine Search gibt
-    @tours = @tours.where(:title => params[:search])
+        @tours = @tours.where("title ILIKE ? ",  "%#{params[:search]}%").to_sql
       end
     else
     if params[:search].present?
-      @tours = @tours.where(:title => params[:search])
+      @tours = Tour.where(table[:title].matches("%#{params[:search]}%"))
 
     else
       @tours = Tour.all
@@ -93,6 +94,9 @@
           @tour = Tour.find(params[:id])
 
         end
+      def table
+        Tour.arel_table
+      end
 
         # Never trust parameters from the scary internet, only allow the white list through.
       def tour_params
