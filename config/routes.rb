@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   resources :tours
-  get ':category_id', to: 'tours#index', as: 'category_tours'
+
   root "tours#index"
+  get '/search' => 'tours#live_search', as: 'search_path'
+  get ':category_id', to: 'tours#index', as: 'category_tours'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,16 @@
+$(document).ready(function() {
+ // $('select').multiselect();
+  alert("Hey");
+  $("#search").bind("keyup", function () {
+    var form = $("#live_search_form"); // grab the form wrapping the search bar.
+    var select =$("select");
+    var selectData = select.serialize();
+    var url = "/shared/live_search"; // live_search action.
+    var formData = form.serialize(); // grab the data in the form
+    var myData = {'search': formData, 'categories': selectData};
+    $.get(this.action,formData, function(html){
+      //$("#live-search-results").html(html);
+      $("#live-search-results").html("<%= escape_javascript(render('shared/live_search')) %>");
+    });
+  });
+});

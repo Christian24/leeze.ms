@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    alias_action :live_search, :to => :read
     if user.present?
       if user.has_role?(:admin)
         can :manage, :all
@@ -11,6 +12,7 @@ class Ability
     else
       can :read, :all
     end
+    can :read, :all
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
